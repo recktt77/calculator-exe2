@@ -1,4 +1,4 @@
-package calculator_exe2
+package calculater
 
 import (
 	"fmt"
@@ -32,13 +32,15 @@ type Triangle struct {
 func (r Rectangle) Area() float64 {
 	return r.Length * r.Width
 }
+
 func (r Rectangle) Perimeter() float64 {
-	return 2 * (r.Width + r.Length)
+	return 2 * (r.Length + r.Width)
 }
 
 func (c Circle) Area() float64 {
-	return c.Radius * c.Radius * math.Pi
+	return math.Pi * c.Radius * c.Radius
 }
+
 func (c Circle) Perimeter() float64 {
 	return 2 * math.Pi * c.Radius
 }
@@ -48,19 +50,19 @@ func (s Square) Area() float64 {
 }
 
 func (s Square) Perimeter() float64 {
-	return s.Length * 4
+	return 4 * s.Length
 }
 
 func (t Triangle) Area() float64 {
 	semiPerimeter := (t.SideA + t.SideB + t.SideC) / 2
-	area := math.Sqrt(semiPerimeter * (semiPerimeter - t.SideA) * (semiPerimeter - t.SideB) * (semiPerimeter - t.SideC))
-	return area
+	return math.Sqrt(semiPerimeter * (semiPerimeter - t.SideA) * (semiPerimeter - t.SideB) * (semiPerimeter - t.SideC))
 }
+
 func (t Triangle) Perimeter() float64 {
 	return t.SideA + t.SideB + t.SideC
 }
 
 func PrintShapeDetails(s Shape) {
-	fmt.Println(s.Area())
-	fmt.Println(s.Perimeter())
+	fmt.Printf("Area: %.2f\n", s.Area())
+	fmt.Printf("Perimeter: %.2f\n", s.Perimeter())
 }
